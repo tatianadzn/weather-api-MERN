@@ -1,0 +1,6 @@
+.row {
+    width: calc(400px - 40px / 3);
+    height: 45px;
+    margin: calc(40px / 6 + 2px) auto calc(40px / 6 - 2px) auto;
+    font-size: 24px;
+}

@@ -1,0 +1,16 @@
+.AppBody {
+    width: 900px;
+    margin: auto;
+    display: block;
+}
+
+.favCities {
+    margin: 50px auto 20px 0;
+    font-size: 45px;
+    font-weight: bold;
+    background-color: lightgray;
+    color: white;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+

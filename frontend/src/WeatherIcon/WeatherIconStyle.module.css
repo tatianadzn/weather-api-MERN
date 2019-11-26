@@ -1,0 +1,6 @@
+.WeatherIconBlock {
+    width: 100px;
+    height: 100px;
+    border: 1px;
+    margin: calc((250px - 100px) / 2) 0 auto 30px;
+}

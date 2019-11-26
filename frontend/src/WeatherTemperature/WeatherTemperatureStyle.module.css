@@ -1,0 +1,6 @@
+.WeatherTemperatureBlock {
+    width: 170px;
+    height: 100px;
+    margin: calc((250px - 100px) / 2) auto auto 30px;
+    font-size: 400%;
+}

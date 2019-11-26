@@ -1,0 +1,16 @@
+
+.btnAdd {
+    width: 50px;
+    text-align: center;
+    margin: 0 auto auto 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: grey;
+    border-color: grey;
+    color: white;
+}
+
+.inputForm {
+    width: 200px;
+    border-radius: 5px;
+}
