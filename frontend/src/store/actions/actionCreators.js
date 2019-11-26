@@ -76,38 +76,25 @@ export const favDataSuccessful = (result, city) => ({
 });
 
 export function fetchFavData(city) {
-    const url = 'https://api.openweathermap.org/data/2.5/weather?appid=41210752a269dfb2e2a8167a0910c3a1&q=' + city;
-    console.log(url + ' will be fetched');
+    console.log(city + ' will be fetched');
     return (dispatch) => {
-
-        fetch(url)
-            .then((response) => {
-                console.log('we got a response!');
-                if (!response.ok) {
-                    dispatch(deleteCityFromFavourites(city));
-                    throw Error(response.statusText);
-                }
-                return response;
-            })
-            .then((result) => result.json())
+        axios('//localhost:8080/weather/', {params: {city: city}})
             .then((result) => dispatch(favDataSuccessful(result, city)))
-            .catch(() => dispatch(fetchDataError('City is not found', 'fav')));
+            .catch(() => {
+                dispatch(deleteCityFromFavourites(city));
+                dispatch(fetchDataError('Cannot find such city', 'fav'))
+            });
     };
 }
 
-export function fetchData(url) {
+export function fetchData(lat, lon) {
     return (dispatch) => {
         dispatch(dataIsLoading(true));
 
-        fetch(url)
-            .then((response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response;
-            })
-            .then((result) => result.json())
+        axios('//localhost:8080/weather/coordinates/', {params: {lat: lat, lon: lon}})
             .then((result) => dispatch(fetchDataISuccessful(result)))
-            .catch(() => dispatch(fetchDataError('Bad connection with API service (retrieving your location)', 'current')));
+            .catch(() => {
+                dispatch(fetchDataError('Bad connection with API service (retrieving your location)', 'current'))
+            });
     };
 }

@@ -73,7 +73,7 @@ const reducer = (state = defaultState, action) => {
 
         case FETCH_DATA_SUCCESSFUL:
             console.log('successful');
-            const cities = action.payload;
+            const cities = action.payload.data;
             const cityObj = {
                 cityName: "City name: " + cities.name,
                 weather: "Weather: " + cities.weather[0].description,
@@ -89,7 +89,7 @@ const reducer = (state = defaultState, action) => {
                 isLoading: false
             };
         case FAV_DATA_SUCCESSFUL:
-            const data = action.payload;
+            const data = action.payload.data;
             const obj = {
                 name: data.name,
                 weather: "Weather: " + data.weather[0].description,

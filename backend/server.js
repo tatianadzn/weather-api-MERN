@@ -20,8 +20,10 @@ connection.once('open', () => {
 });
 
 const favouritesRouter = require('./routes/favourites');
+const weatherRouter = require('./routes/weather');
 
 app.use('/favourites', favouritesRouter);
+app.use('/weather', weatherRouter);
 
 app.listen(port, () => {
     console.log('Server is running on port: ' + port);

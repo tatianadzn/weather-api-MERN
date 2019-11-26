@@ -52,14 +52,12 @@ class App extends React.Component{
     error(){
         this.setState({latitude: 60, longitude: 30});
         this.setState({errorText: 'Cannot retrive your location'});
-        const url = 'https://api.openweathermap.org/data/2.5/weather?appid=41210752a269dfb2e2a8167a0910c3a1&lat=' + this.state.latitude.toString() + '&lon=' + this.state.longitude.toString();
-        this.props.fetchData(url);
+        this.props.fetchData(this.state.latitude.toString(), this.state.longitude.toString());
     }
     success(position){
         this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude});
         this.setState({errorText: ''});
-        const url = 'https://api.openweathermap.org/data/2.5/weather?appid=41210752a269dfb2e2a8167a0910c3a1&lat=' + this.state.latitude.toString() + '&lon=' + this.state.longitude.toString();
-        this.props.fetchData(url);
+        this.props.fetchData(this.state.latitude.toString(), this.state.longitude.toString());
     }
 
     handleAddingNewCityToFav = city => {
