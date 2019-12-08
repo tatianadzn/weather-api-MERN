@@ -47,10 +47,19 @@ export const deleteCityFromStore = city => ({
 
 export function deleteCityFromFavourites(city){
     return (dispatch) => {
-        axios.delete('//localhost:8080/favourites/', {data: {city: city}})
+        axios.delete('//localhost:8080/favourites/', {data: {city: city.toLowerCase()}})
             .then(res => console.log(res.data))
             .then(() => dispatch(deleteCityFromStore(city)))
             .catch(err => console.log('Error in deleting city from favourites: ' + err));
+    }
+}
+
+export function postCityTODB(city){
+    return() => {
+        //add city to db
+        axios.post('//localhost:8080/favourites/', {city: city})
+            .then(res => console.log(res.data))
+            .catch(err => console.log('Error on add favourite city: ' + err));
     }
 }
 
@@ -80,8 +89,16 @@ export function fetchFavData(city) {
     return (dispatch) => {
         axios('//localhost:8080/weather/', {params: {city: city}})
             .then((result) => dispatch(favDataSuccessful(result, city)))
+            .then(() => {
+                axios.get('//localhost:8080/favourites/')
+                    .then(result => {
+                        if(result.data.find(cityEL => cityEL.city === city) === undefined){
+                            dispatch(postCityTODB(city));
+                        }
+                    })
+                    .catch(() => {})})
             .catch(() => {
-                dispatch(deleteCityFromFavourites(city));
+                dispatch(deleteCityFromStore(city));
                 dispatch(fetchDataError('Cannot find such city', 'fav'))
             });
     };

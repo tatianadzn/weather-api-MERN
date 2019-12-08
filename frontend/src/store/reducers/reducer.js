@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import {
     ADD_CITY_TO_FAVOURITES,
     DATA_IS_LOADING,
@@ -31,10 +29,10 @@ const reducer = (state = defaultState, action) => {
                 return state;
             }
 
-            //add city to db
-            axios.post('//localhost:8080/favourites/', {city: action.payload})
-                .then(res => console.log(res.data))
-                .catch(err => console.log('Error on add favourite city: ' + err));
+            // //add city to db
+            // axios.post('//localhost:8080/favourites/', {city: action.payload})
+            //     .then(res => console.log(res.data))
+            //     .catch(err => console.log('Error on add favourite city: ' + err));
 
             //and add city to state
             return {
