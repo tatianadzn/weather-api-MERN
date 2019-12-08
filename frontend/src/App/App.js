@@ -35,7 +35,7 @@ class App extends React.Component{
     }
 
     componentDidMount() {
-        this.getLocation();
+        // this.getLocation();
     }
 
     getLocation() {

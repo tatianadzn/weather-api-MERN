@@ -8,9 +8,9 @@ export const FAV_DATA_SUCCESSFUL = 'FAV_DATA_SUCCESSFUL';
 export const UPDATE_STORE_CITYLIST = 'UPDATE_STORE_CITYLIST';
 export const DELETE_CITY_FROM_STORE = 'DELETE_CITY_FROM_STORE';
 
-export const addCityToFavourites = (cityList) => ({
+export const addCityToFavourites = (city) => ({
     type: ADD_CITY_TO_FAVOURITES,
-    payload: cityList
+    payload: city.toLowerCase()
 });
 
 export function getCityListFromLocalStorage(){

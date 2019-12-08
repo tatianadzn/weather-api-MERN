@@ -5,13 +5,13 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather?appid=41210752a
 
 
 router.route('/').get((req, res) => {
-    axios(API_URL + 'q=' + req.query.city)
+    axios.get(API_URL + 'q=' + req.query.city)
         .then(response => res.json(response.data))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/coordinates/').get((req, res) =>{
-    axios(API_URL + 'lat=' + req.query.lat + '&lon=' + req.query.lon)
+    axios.get(API_URL + 'lat=' + req.query.lat + '&lon=' + req.query.lon)
         .then(response => res.json(response.data))
         .catch(err => res.status(400).json('Error: ' + err));
 });

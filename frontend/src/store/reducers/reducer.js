@@ -26,6 +26,11 @@ const reducer = (state = defaultState, action) => {
 
     switch (action.type) {
         case ADD_CITY_TO_FAVOURITES:
+            //check if already added
+            if (state.cityList.find(city => city.name.toLowerCase() === action.payload.toLowerCase()) !== undefined){
+                return state;
+            }
+
             //add city to db
             axios.post('//localhost:8080/favourites/', {city: action.payload})
                 .then(res => console.log(res.data))
